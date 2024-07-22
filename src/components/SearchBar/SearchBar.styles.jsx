@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Searchbar = styled.header`
-    top: 0;
+  top: 0;
   left: 0;
   position: sticky;
   z-index: 1100;
@@ -20,7 +20,7 @@ export const Searchbar = styled.header`
 `;
 
 export const Form = styled.form`
-      display: flex;
+  display: flex;
   align-items: center;
   width: 100%;
   max-width: 600px;
@@ -30,11 +30,11 @@ export const Form = styled.form`
 `;
 
 export const FormButton = styled.button`
-    display: inline-block;
+  display: inline-block;
   width: 48px;
   height: 48px;
   border: 0;
-  background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
+  
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
@@ -43,9 +43,9 @@ export const FormButton = styled.button`
   cursor: pointer;
   outline: none;
 
-  :hover {
+  &:hover {
   opacity: 1;
-}
+  }
 `;
 
 export const ButtonText = styled.span`

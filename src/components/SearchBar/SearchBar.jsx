@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Searchbar, Form, FormButton, ButtonText, FormInput} from './SearchBar.styles'
+import { Searchbar, Form, FormButton, ButtonText, FormInput } from './SearchBar.styles';
+import { BsSearch } from 'react-icons/bs';
 
 class SearchBar extends Component {
   state = {
@@ -24,7 +25,8 @@ class SearchBar extends Component {
         return (
             <Searchbar>
               <Form onSubmit = {this.handleSubmit}>
-                <FormButton type="submit" class="button">
+              <FormButton type="submit" class="button">
+                  <BsSearch />
                   <ButtonText>Search</ButtonText>
                 </FormButton>
 

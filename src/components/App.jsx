@@ -79,7 +79,7 @@ class App extends Component {
 
                 {images.length > 0 ? (
                     <ImageGallery images={images} />) :
-                (<p>Image gallery is empty...</p>)}
+                (<p class='gallery-text'>Image gallery is empty...</p>)}
                 
 
                 {isLoading && (<Loader/>)}
