@@ -1,39 +1,61 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import Modal from 'components/Modal/Modal';
-import {GalleryItem, GalleryImg} from './ImageGalleryItem.styled'
+import { GalleryItem, GalleryImg } from './ImageGalleryItem.styled'
 
-class ImageGalleryItem extends Component {
-    state = {
-        isModalOpen: false,
-    };
+export const ImageGalleryItem = ({ image: { webformatURL, tags, largeImageURL } }) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    toggleModal = () => {
-       this.setState(({isModalOpen})=>({isModalOpen: !isModalOpen}))
-   }
+    const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-
-    render() {
-        
-        const { isModalOpen } = this.state;
-        const { image: {webformatURL, tags, largeImageURL} } = this.props;
-
-        return (
-            <>
-            <GalleryItem onClick= {this.toggleModal}>
-                    <GalleryImg src={webformatURL} alt={tags} />
-                    </GalleryItem>
-                {isModalOpen &&
-                    <Modal
-                        largeImageURL={largeImageURL} 
-                        tags={tags} 
-                        onClose={this.toggleModal}
-                    />
-                }
+    return (
+        <>
+            <GalleryItem onClick={toggleModal}>
+                <GalleryImg src={webformatURL} alt={tags} />
+            </GalleryItem>
+            {isModalOpen &&
+                <Modal
+                    largeImageURL={largeImageURL}
+                    tags={tags}
+                    onClose={toggleModal}
+                />
+            }
                 
-                </>
-        )
-    }
-};
+        </>
+    )
+
+}
+
+
+
+// class ImageGalleryItem extends Component {
+//     state = {
+//         isModalOpen: false,
+//     };
+
+//     toggleModal = () => {
+//        this.setState(({isModalOpen})=>({isModalOpen: !isModalOpen}))
+//    }
+
+
+//     render() {
+
+//         return (
+//             <>
+//             <GalleryItem onClick= {this.toggleModal}>
+//                     <GalleryImg src={webformatURL} alt={tags} />
+//                     </GalleryItem>
+//                 {isModalOpen &&
+//                     <Modal
+//                         largeImageURL={largeImageURL} 
+//                         tags={tags} 
+//                         onClose={this.toggleModal}
+//                     />
+//                 }
+                
+//                 </>
+//         )
+//     }
+// };
 
 
 
