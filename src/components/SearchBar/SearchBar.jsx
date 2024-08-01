@@ -1,30 +1,24 @@
-import { Component } from 'react';
+import { setState } from 'react';
 import PropTypes from 'prop-types';
 import { Searchbar, Form, FormButton, ButtonText, FormInput } from './SearchBar.styles';
 import { BsSearch } from 'react-icons/bs';
 
-class SearchBar extends Component {
-  state = {
-    query: '',
-    inputValue: '',
-  }
+const SearchBar = ({ onSubmit }) => {
+  const [inputValue, setInputValue] = setState('');
 
-  handleChange = evt => {
-    this.setState({ inputValue: evt.target.value });
+  const handleChange = evt => {
+    setInputValue(evt.target.value);
   };
 
-  handleSubmit = evt => {
+  const handleSubmit = evt => {
     evt.preventDefault();
-    const searchQuery = evt.target.elements.query.value.trim();
-    this.props.onSubmit(searchQuery);
-    evt.target.reset();
-  }
+    onSubmit(inputValue);
+    setInputValue('');
+  };
 
-
-    render() {
-        return (
+  return (
             <Searchbar>
-              <Form onSubmit = {this.handleSubmit}>
+              <Form onSubmit = {handleSubmit}>
               <FormButton type="submit" class="button">
                   <BsSearch />
                   <ButtonText>Search</ButtonText>
@@ -34,14 +28,53 @@ class SearchBar extends Component {
                   name="query"
                   type="text"
                   placeholder="Search images and photos"
-                  value={this.state.inputValue}
-                  onChange = {this.handleChange}
+                  value={inputValue}
+                  onChange = {handleChange}
                 />
               </Form>
             </Searchbar>
         )
-    }
-};
+}
+
+// class SearchBar extends Component {
+//   state = {
+//     query: '',
+//     inputValue: '',
+//   }
+
+//   handleChange = evt => {
+//     this.setState({ inputValue: evt.target.value });
+//   };
+
+//   handleSubmit = evt => {
+//     evt.preventDefault();
+//     const searchQuery = evt.target.elements.query.value.trim();
+//     this.props.onSubmit(searchQuery);
+//     evt.target.reset();
+//   }
+
+
+//     render() {
+//         return (
+//             <Searchbar>
+//               <Form onSubmit = {this.handleSubmit}>
+//               <FormButton type="submit" class="button">
+//                   <BsSearch />
+//                   <ButtonText>Search</ButtonText>
+//                 </FormButton>
+
+//                 <FormInput
+//                   name="query"
+//                   type="text"
+//                   placeholder="Search images and photos"
+//                   value={this.state.inputValue}
+//                   onChange = {this.handleChange}
+//                 />
+//               </Form>
+//             </Searchbar>
+//         )
+//     }
+// };
 
 SearchBar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
@@ -49,5 +82,11 @@ SearchBar.propTypes = {
 
 
 export default SearchBar;
+
+
+
+
+
+
 
 

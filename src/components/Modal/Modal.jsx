@@ -1,53 +1,75 @@
-import { Component } from 'react';
+import { useEffect } from 'react';  
+import { Overlay, OverlayModal, Img } from './Modal.styles'
 
-import PropTypes from 'prop-types';
-import {Overlay, OverlayModal, Img} from './Modal.styles'
-
-
-class Modal extends Component{
-    componentDidMount() {
-        window.addEventListener('keydown', this.escapeClose);
-
-    };
-
-    componentWillUnmount() {
-        window.removeEventListener('keydown', this.escapeClose);
-
-    };
-
-    escapeClose = evt => {
-        if (evt.code === 'Escape') {
-            this.props.onClose();
+export const Modal = ({ largeImageURL, tags, onClose }) => {
+    useEffect(() => {
+        const escapeClose = evt => {
+            if (evt.code === 'Escape') {
+                onClose();
+            };
+            
+            window.addEventListener('keydown', escapeClose);
+            
+            return () => {
+                window.removeEventListener('keydown', escapeClose);
+            }
         };
-    };
+    }, [onClose]);
 
-    backdropClickClose = evt => {
+    const backdropClickClose = evt => {
         if (evt.currentTarget === evt.target) {
-            this.props.onClose();
+            onClose();
         };
     };
 
-    render() {
-        const { largeImageURL, tags } = this.props;
-        
-
-       return (    
-        <Overlay  onClick={this.backdropClickClose}>
+    return (    
+        <Overlay  onClick={backdropClickClose}>
             <OverlayModal>
                 <Img src={largeImageURL} alt={tags} />
             </OverlayModal>
            </Overlay>
        )
-        
-        
-    };
-};
+}
 
-Modal.propTypes = {
-  largeImageURL: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
+
+// class Modal extends Component{
+//     componentDidMount() {
+//         window.addEventListener('keydown', this.escapeClose);
+
+//     };
+
+//     componentWillUnmount() {
+//         window.removeEventListener('keydown', this.escapeClose);
+
+//     };
+
+//     escapeClose = evt => {
+//         if (evt.code === 'Escape') {
+//             this.props.onClose();
+//         };
+//     };
+
+//     backdropClickClose = evt => {
+//         if (evt.currentTarget === evt.target) {
+//             this.props.onClose();
+//         };
+//     };
+
+//     render() {
+//         const { largeImageURL, tags } = this.props;
+        
+
+//        return (    
+//         <Overlay  onClick={this.backdropClickClose}>
+//             <OverlayModal>
+//                 <Img src={largeImageURL} alt={tags} />
+//             </OverlayModal>
+//            </Overlay>
+//        )
+        
+        
+//     };
+// };
 
 
 export default Modal;

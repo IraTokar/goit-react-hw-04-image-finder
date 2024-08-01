@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from 'prop-types'
 import {GalleryList} from './ImageGallery.styles'
 
 
@@ -14,15 +13,6 @@ const ImageGallery = ({images}) => {
             )}
         </GalleryList>
     )
-};
-
-
-ImageGallery.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })
-  ).isRequired,
 };
 
 export default ImageGallery;

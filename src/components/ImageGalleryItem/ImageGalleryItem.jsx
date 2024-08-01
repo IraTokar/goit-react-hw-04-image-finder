@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Modal from 'components/Modal/Modal';
 import { GalleryItem, GalleryImg } from './ImageGalleryItem.styled'
 
-export const ImageGalleryItem = ({ image: { webformatURL, tags, largeImageURL } }) => {
+const ImageGalleryItem = ({ image: { webformatURL, tags, largeImageURL } }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleModal = () => setIsModalOpen(!isModalOpen);
@@ -38,6 +38,9 @@ export const ImageGalleryItem = ({ image: { webformatURL, tags, largeImageURL } 
 
 
 //     render() {
+        
+//         const { isModalOpen } = this.state;
+//         const { image: {webformatURL, tags, largeImageURL} } = this.props;
 
 //         return (
 //             <>
@@ -60,5 +63,4 @@ export const ImageGalleryItem = ({ image: { webformatURL, tags, largeImageURL } 
 
 
 export default ImageGalleryItem;
-
 
