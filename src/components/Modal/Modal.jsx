@@ -8,10 +8,10 @@ export const Modal = ({ largeImageURL, tags, onClose }) => {
                 onClose();
             };
             
-            document.addEventListener('keydown', escapeClose);
+            window.addEventListener('keydown', escapeClose);
             
             return () => {
-                document.removeEventListener('keydown', escapeClose);
+                window.removeEventListener('keydown', escapeClose);
             }
         };
     },[onClose]);
