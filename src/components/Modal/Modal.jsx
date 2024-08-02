@@ -6,14 +6,15 @@ export const Modal = ({ largeImageURL, tags, onClose }) => {
         const escapeClose = evt => {
             if (evt.code === 'Escape') {
                 onClose();
-            };
-            
-            window.addEventListener('keydown', escapeClose);
-            
-            return () => {
-                window.removeEventListener('keydown', escapeClose);
             }
         };
+            
+        window.addEventListener('keydown', escapeClose);
+            
+        return () => {
+            window.removeEventListener('keydown', escapeClose);
+        };
+        
     },[onClose]);
 
     const backdropClickClose = evt => {
