@@ -3,7 +3,7 @@ import { Overlay, OverlayModal, Img } from './Modal.styles'
 
 export const Modal = ({ largeImageURL, tags, onClose }) => {
     useEffect(() => {
-        const escapeClose = evt => {
+        const escapeClo se = evt => {
             if (evt.code === 'Escape') {
                 onClose();
             };
