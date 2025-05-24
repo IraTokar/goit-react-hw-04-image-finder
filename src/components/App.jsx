@@ -51,7 +51,7 @@ export const App = () => {
                 setIsLoading(false);
             }
         }; addImages(query, currentPage);
-        }, [query, currentPage,setImages,setIsLoading,setTotalPages]);
+        }, [query, currentPage]);
 
     
     return (
